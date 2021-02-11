@@ -30,11 +30,11 @@ public class UserController {
     // User Login
     @PostMapping("/auth/login")
     public ResponseEntity<?> login(@RequestBody User user) {
-        var message = service.verifyUser(user.email, user.password);
+        String message = service.verifyUser(user.email, user.password);
         if (message != "")
             return new ResponseEntity<>(Messages.setMessage("bad", message), HttpStatus.OK);
         else {
-            var token = service.generateTokenString(60);
+            String token = service.generateTokenString(60);
             User new_user = service.getUser(user.email);
             new_user.setToken(token);
             service.save(new_user);
@@ -46,7 +46,7 @@ public class UserController {
     // Register User
     @PostMapping("/auth/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        var message = service.doesExistUser(user.email);
+        String message = service.doesExistUser(user.email);
         if (message != "")
             return new ResponseEntity<>(Messages.setMessage("bad", message), HttpStatus.OK);
         service.save(user);
@@ -58,7 +58,7 @@ public class UserController {
     public ResponseEntity<?> update(@RequestBody User user) {
         try {
             User temp_user = service.get(user.id);
-            var message = service.doesExistUser(user.email);
+            String message = service.doesExistUser(user.email);
             if (message != "")
                 if (!temp_user.email.equals(user.email))
                     return new ResponseEntity<>(Messages.setMessage("bad", message), HttpStatus.OK);
