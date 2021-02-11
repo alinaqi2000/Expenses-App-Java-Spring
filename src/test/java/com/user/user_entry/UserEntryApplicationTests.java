@@ -1,12 +1,12 @@
-package com.user.user_entry;
+// package com.user.user_entry;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+// @SpringBootTest
 class UserEntryApplicationTests {
 
-	@Test
+	// @Test
 	void contextLoads() {
 	}
 
